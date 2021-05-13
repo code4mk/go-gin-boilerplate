@@ -8,7 +8,7 @@ type UserController struct{}
 
 func (u UserController) Retrieve(c *gin.Context) {
 	c.JSON(200, gin.H{
-		"message": "hello gogin api",
+		"message": "hello gogin api v1.0.1",
 		"api":     "golang",
 		"version": "v1.0.2",
 		"author":  "kamal 2121",
