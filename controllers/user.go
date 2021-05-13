@@ -15,3 +15,21 @@ func (u UserController) Retrieve(c *gin.Context) {
 	})
 	return
 }
+
+func (u UserController) GetSingle(c *gin.Context) {
+	user := c.Params.ByName("id")
+	uid := c.Param("id")
+	b := c.Request.Host
+	r := c.Query("name")
+
+	headerGetToken := c.GetHeader("token")
+
+	c.JSON(200, gin.H{
+		"uid":         user,
+		"u":           uid,
+		"fullpath":    c.FullPath(),
+		"a":           b,
+		"query-name":  r,
+		"header-name": headerGetToken,
+	})
+}
