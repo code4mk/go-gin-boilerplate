@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"goginapi/routes"
+	"goginapi/schedule"
 
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
@@ -10,7 +11,7 @@ import (
 )
 
 func main() {
-
+	schedule.Task()
 	err := godotenv.Load()
 
 	if err != nil {
