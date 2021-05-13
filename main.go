@@ -2,20 +2,16 @@ package main
 
 import (
 	"fmt"
+	"goginapi/core"
 	"goginapi/model"
 	"goginapi/routes"
 
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 	"github.com/joho/godotenv"
-	"gorm.io/driver/mysql"
-	"gorm.io/gorm"
 )
 
 func main() {
-
-	fmt.Println("mm")
-
 	// schedule.Task()
 	err := godotenv.Load()
 
@@ -23,17 +19,13 @@ func main() {
 		fmt.Println("failed to find .env file")
 	}
 
-	dsn := "root:mysql@tcp(127.0.0.1:3306)/gogin?charset=utf8mb4&parseTime=True&loc=Local"
-	db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})
-	if err != nil {
-		fmt.Println("failed to find .env file")
-	}
+	dbc := new(core.Orm)
+	db := dbc.Done()
 
-	user := model.User{Name: "Jinzhu", Age: 18}
-
-	db.AutoMigrate(&user, model.Book{})
-
+	user := model.User{Name: "kamal", Age: 18}
 	db.Create(&user)
+
+	// db.Create(&user)
 
 	// declare router
 	router := gin.Default()
