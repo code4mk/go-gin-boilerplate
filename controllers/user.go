@@ -1,12 +1,22 @@
 package controllers
 
 import (
+	"goginapi/core"
+	"goginapi/model"
+
 	"github.com/gin-gonic/gin"
 )
 
 type UserController struct{}
 
 func (u UserController) Retrieve(c *gin.Context) {
+
+	dbc := new(core.Orm)
+	db := dbc.Done()
+
+	user := model.User{Name: "jamal", Age: 18}
+	db.Create(&user)
+
 	c.JSON(200, gin.H{
 		"message": "hello gogin api v1.0.1",
 		"api":     "golang",

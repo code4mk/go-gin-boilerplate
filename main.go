@@ -2,8 +2,6 @@ package main
 
 import (
 	"fmt"
-	"goginapi/core"
-	"goginapi/model"
 	"goginapi/routes"
 
 	"github.com/gin-contrib/cors"
@@ -19,11 +17,11 @@ func main() {
 		fmt.Println("failed to find .env file")
 	}
 
-	dbc := new(core.Orm)
-	db := dbc.Done()
+	// dbc := new(core.Orm)
+	// db := dbc.Done()
 
-	user := model.User{Name: "kamal", Age: 18}
-	db.Create(&user)
+	// user := model.User{Name: "kamal", Age: 18}
+	// db.Create(&user)
 
 	// db.Create(&user)
 
